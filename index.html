@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Martin Bastide – Portfolio BTS Aménagement paysager</title>
+<meta name="description" content="Portfolio de Martin Bastide, étudiant en BTS Aménagement paysager en alternance, à la recherche d'un poste de chef de chantier dans le paysage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== COULEURS : modifiez-les ici pour changer toute l'identité du site ===== */
+:root{
+  --vert-fonce:#26402F;
+  --vert-mousse:#5E7A47;
+  --pierre:#EDEEE6;      /* fond principal */
+  --sable:#D9CDB4;       /* beige */
+  --terre:#7A5A3E;       /* brun */
+  --texte:#1F2A22;
+  --blanc:#FBFBF7;
+  --serif:'Bitter',Georgia,serif;
+  --sans:'Karla',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--sans);color:var(--texte);background:var(--pierre);line-height:1.65;font-size:1.05rem}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--terre);outline-offset:3px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:5rem 0}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;color:var(--vert-fonce)}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:2rem}
+h3{font-size:1.25rem;margin-bottom:.5rem}
+p+p{margin-top:1rem}
+
+/* ===== MENU ===== */
+header{position:sticky;top:0;z-index:20;background:rgba(237,238,230,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--sable)}
+nav{display:flex;justify-content:space-between;align-items:center;min-height:58px;gap:1rem}
+.logo{font-family:var(--serif);font-weight:700;text-decoration:none;color:var(--vert-fonce)}
+nav ul{display:flex;gap:1.4rem;list-style:none}
+nav ul a{text-decoration:none;font-weight:500;font-size:.95rem}
+nav ul a:hover{color:var(--vert-mousse)}
+.burger{display:none;background:none;border:1px solid var(--vert-fonce);border-radius:6px;padding:.3rem .7rem;font:inherit;color:var(--vert-fonce);cursor:pointer}
+
+/* ===== ACCUEIL ===== */
+.hero{padding:0;background:var(--vert-fonce);color:var(--blanc);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;min-height:calc(100vh - 58px);align-items:stretch}
+.hero-text{padding:4rem 2rem 4rem max(1.25rem,calc((100vw - 1080px)/2));display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.hero h1{color:var(--blanc);font-size:clamp(2.8rem,8vw,5.5rem);letter-spacing:-.02em}
+.hero .titre{margin-top:1.2rem;font-size:1.2rem;color:var(--sable);max-width:30ch}
+.hero .intro{margin-top:1rem;max-width:44ch;opacity:.92}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:4px;text-decoration:none;font-weight:700;border:2px solid var(--sable);transition:background .2s,color .2s}
+.btn.plein{background:var(--sable);color:var(--vert-fonce)}
+.btn.plein:hover{background:var(--blanc)}
+.btn.vide:hover{background:rgba(255,255,255,.12)}
+/* Image d'accroche : remplacez img/accroche.jpg par votre photo */
+.hero-img{position:relative;min-height:320px;background:var(--vert-mousse)}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* Courbes de niveau décoratives (clin d'oeil au plan topographique) */
+.contours{position:absolute;inset:0;opacity:.13;pointer-events:none}
+
+/* ===== PROFIL ===== */
+.profil{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem}
+.objectif{background:var(--vert-fonce);color:var(--blanc);padding:2rem;border-radius:6px;align-self:start}
+.objectif h3{color:var(--sable)}
+.faits{list-style:none;margin-top:1.5rem}
+.faits li{padding:.6rem 0;border-top:1px solid var(--sable)}
+.faits b{color:var(--terre)}
+
+/* Parcours */
+.parcours{margin-top:3.5rem;display:grid;grid-template-columns:1fr 1.6fr;gap:3rem}
+.parcours h3{margin-bottom:1rem}
+.frise{list-style:none;border-left:3px solid var(--vert-mousse);padding-left:1.2rem}
+.frise li{margin-bottom:1.1rem;position:relative}
+.frise li::before{content:"";position:absolute;left:calc(-1.2rem - 7px);top:.55rem;width:11px;height:11px;border-radius:50%;background:var(--terre)}
+.frise .date{font-weight:700;color:var(--terre)}
+.frise small{display:block;color:#4b5a4f}
+
+/* ===== COMPETENCES ===== */
+.competences{background:var(--blanc)}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem 2.5rem}
+.comp-bloc{border-top:3px solid var(--vert-mousse);padding-top:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.6rem;list-style:none}
+.tags li{background:var(--pierre);border:1px solid var(--sable);padding:.2rem .7rem;border-radius:99px;font-size:.92rem}
+
+/* ===== REALISATIONS ===== */
+.chantiers{display:grid;gap:3rem}
+.chantier{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center}
+.chantier:nth-child(even) .photo{order:2}
+.photo{aspect-ratio:4/3;background:var(--sable);border-radius:6px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.chantier dl{margin-top:1rem}
+.chantier dt{font-weight:700;color:var(--terre);font-size:.95rem;margin-top:.6rem}
+.chantier dd{margin:0}
+.groupe{display:inline-block;margin-top:1rem;background:var(--sable);padding:.25rem .8rem;border-radius:4px;font-size:.92rem;font-weight:500}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--vert-fonce);color:var(--blanc)}
+.contact h2{color:var(--blanc)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact a{color:var(--sable)}
+.contact ul{list-style:none}
+.contact li{padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.contact li span{display:block;font-size:.88rem;color:var(--sable)}
+footer{background:#1b2e22;color:var(--sable);text-align:center;padding:1.2rem;font-size:.9rem}
+
+/* ===== TELEPHONE ===== */
+@media(max-width:820px){
+  section{padding:3.5rem 0}
+  .burger{display:block}
+  nav ul{display:none;position:absolute;top:58px;left:0;right:0;flex-direction:column;background:var(--pierre);padding:1rem 1.25rem;border-bottom:1px solid var(--sable);gap:.8rem}
+  nav ul.ouvert{display:flex}
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-text{padding:3rem 1.25rem}
+  .hero-img{min-height:260px;order:-1}
+  .profil,.parcours,.chantier,.contact-grid{grid-template-columns:1fr}
+  .chantier:nth-child(even) .photo{order:0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap" aria-label="Navigation principale">
+    <a href="#accueil" class="logo">Martin Bastide</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul id="menu">
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ ACCUEIL ============ -->
+<section class="hero" id="accueil">
+  <svg class="contours" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke="#D9CDB4" stroke-width="1.5">
+    <path d="M-20 520C120 430 220 560 360 480S600 380 820 460"/>
+    <path d="M-20 580C130 500 230 620 370 545S610 450 820 525"/>
+    <path d="M-20 640C140 570 240 680 380 610S620 520 820 590"/>
+    <path d="M-20 700C150 640 250 740 390 675S630 590 820 655"/>
+  </svg>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1>Martin<br>Bastide</h1>
+      <p class="titre">Étudiant en BTS Aménagement paysager, en alternance</p>
+      <p class="intro">À la recherche d'un poste de chef de chantier dans le paysage.</p>
+      <div class="btns">
+        <a class="btn plein" href="#realisations">Voir mes chantiers</a>
+        <a class="btn vide" href="#contact">Me contacter</a>
+      </div>
+    </div>
+    <!-- IMAGE D'ACCROCHE : placez votre photo dans img/accroche.jpg -->
+    <div class="hero-img">
+      <img src="img/accroche.jpg" alt="Chantier d'aménagement paysager" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROFIL ============ -->
+<section id="profil">
+  <div class="wrap">
+    <h2>Profil</h2>
+    <div class="profil">
+      <div>
+        <p>Martin, 28 ans, passionné de pêche, de skateboard, d'objets et de vêtements anciens. Actuellement en alternance en BTS Aménagement paysager, je souhaite poursuivre en licence pour approfondir mes connaissances.</p>
+        <p>Jeune homme consciencieux et dynamique, je recherche un poste de chef de chantier dans le paysage.</p>
+        <ul class="faits">
+          <li><b>Formation en cours :</b> BTS Aménagement paysager (2027)</li>
+          <li><b>Projet :</b> poursuite en licence</li>
+          <li><b>Permis :</b> A2</li>
+          <li><b>Centres d'intérêt :</b> horticulture, musique, art, sport, attrait pour le vintage</li>
+        </ul>
+      </div>
+      <aside class="objectif">
+        <h3>Objectif professionnel</h3>
+        <p>Devenir chef de chantier dans le paysage, après le BTS et une licence.</p>
+      </aside>
+    </div>
+
+    <div class="parcours">
+      <div>
+        <h3>Formations</h3>
+        <!-- Pour ajouter une formation : copiez un bloc <li> -->
+        <ul class="frise">
+          <li><span class="date">2027</span> BTS Aménagement paysager</li>
+          <li><span class="date">2026</span> SST (Sauveteur secouriste du travail)</li>
+          <li><span class="date">2020</span> CQP moniteur de skateboard</li>
+          <li><span class="date">2016</span> Bac STAV</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Expériences professionnelles</h3>
+        <ul class="frise">
+          <li><span class="date">2025/2026</span> Apprenti paysagiste – Pépinière Sport et Paysage
+            <small>Plantation, nivelage, conception bois/maçonnerie, irrigation, taille, entretien des végétaux</small></li>
+          <li><span class="date">2024/2025</span> Agent de maintenance – Restaurant Discovolante
+            <small>Réparation, création, entretien, livraison</small></li>
+          <li><span class="date">2023</span> Écailler – Restaurant La Table d'Oc
+            <small>Contrôle, cuisson, création</small></li>
+          <li><span class="date">2022</span> Poissonnier – Poissonnerie « Chez Sauveur »
+            <small>Contrôle, découpe, cuisson, contact client</small></li>
+          <li><span class="date">2020</span> Conseiller vendeur – Friperie Kilostock
+            <small>Contact client, vente, conseil, facing, gestion</small></li>
+          <li><span class="date">2019/2024</span> Manutentionnaire (saisons) – SARL Helios Marine
+            <small>Réparation, tri, conditionnement</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPETENCES ============ -->
+<section class="competences" id="competences">
+  <div class="wrap">
+    <h2>Compétences techniques</h2>
+    <div class="comp-grid">
+      <div class="comp-bloc">
+        <h3>Aménagement</h3>
+        <ul class="tags"><li>Plantation</li><li>Engazonnement</li><li>Création de massifs</li><li>Pose de bordures</li><li>Pavage</li><li>Dallage</li></ul>
+      </div>
+      <div class="comp-bloc">
+        <h3>Entretien</h3>
+        <ul class="tags"><li>Taille de haies</li><li>Entretien des espaces verts</li><li>Débroussaillage</li><li>Tonte</li></ul>
+      </div>
+      <div class="comp-bloc">
+        <h3>Élagage</h3>
+        <p>Techniques de taille, utilisation du matériel adapté, connaissance des règles de sécurité et des limites de mes compétences.</p>
+      </div>
+      <div class="comp-bloc">
+        <h3>Matériel</h3>
+        <ul class="tags"><li>Débroussailleuse</li><li>Taille-haie</li><li>Tronçonneuse</li><li>Mini-pelle</li><li>Outils de mesure</li></ul>
+      </div>
+      <div class="comp-bloc">
+        <h3>Conception</h3>
+        <ul class="tags"><li>Plans</li><li>Croquis</li><li>Plans de plantation</li></ul>
+      </div>
+      <div class="comp-bloc">
+        <h3>Organisation</h3>
+        <ul class="tags"><li>Préparation d'un chantier</li><li>Estimation des besoins</li><li>Choix des végétaux</li><li>Répartition des tâches</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REALISATIONS ============ -->
+<section id="realisations">
+  <div class="wrap">
+    <h2>Chantiers et réalisations</h2>
+    <div class="chantiers">
+
+      <!-- CHANTIER 1 -->
+      <article class="chantier">
+        <div class="photo"><img src="img/roujan.jpg" alt="Espace Jean Raynal à Roujan" loading="lazy"></div>
+        <div>
+          <h3>Espace Jean Raynal – Roujan</h3>
+          <p>Création de massifs, pose de voliges, pose de ganivelles, plantation d'arbres, d'arbustes et de plantes, création d'escaliers en traverses paysagères.</p>
+          <dl>
+            <dt>Contexte</dt><dd>Parc public</dd>
+            <dt>Travaux réalisés</dt><dd>Terrassement, plantations, pose de matériaux, entretien</dd>
+            <dt>Matériel utilisé</dt><dd>Outils manuels, engins, machines</dd>
+            <!-- À COMPLÉTER : votre rôle précis sur ce chantier -->
+            <dt>Mon rôle</dt><dd>[à compléter]</dd>
+          </dl>
+          <span class="groupe">Travail réalisé en groupe</span>
+        </div>
+      </article>
+
+      <!-- CHANTIER 2 -->
+      <article class="chantier">
+        <div class="photo"><img src="img/charles-de-gaulle.jpg" alt="Esplanade Charles de Gaulle à Montpellier" loading="lazy"></div>
+        <div>
+          <h3>Esplanade Charles de Gaulle – Montpellier</h3>
+          <dl>
+            <dt>Contexte</dt><dd>Parc public</dd>
+            <dt>Travaux réalisés</dt><dd>Plantations, entretien</dd>
+            <dt>Matériel utilisé</dt><dd>Outils manuels</dd>
+            <dt>Mon rôle</dt><dd>Plantation, entretien</dd>
+          </dl>
+          <span class="groupe">Travail réalisé en groupe</span>
+        </div>
+      </article>
+
+      <!-- POUR AJOUTER UN CHANTIER : copiez un bloc <article class="chantier"> ci-dessus,
+           ajoutez votre photo dans le dossier img/ et changez le nom du fichier. -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <ul>
+        <li><span>Téléphone</span><a href="tel:+33623563604">06 23 56 36 04</a></li>
+        <li><span>E-mail</span><a href="mailto:martin.bastide34@gmail.com">martin.bastide34@gmail.com</a></li>
+        <!-- ATTENTION : le code postal fourni (3430) est incomplet, à corriger -->
+        <li><span>Adresse</span>21 rue des Hauts de Saint-Jean, [code postal à compléter] Saint-Jean-de-Védas</li>
+        <li><span>Permis</span>A2</li>
+      </ul>
+      <div>
+        <p>Une question, une opportunité d'alternance ou de poste de chef de chantier ? Écrivez-moi ou appelez-moi, je réponds avec plaisir.</p>
+        <div class="btns">
+          <a class="btn plein" href="mailto:martin.bastide34@gmail.com">M'écrire</a>
+          <a class="btn vide" href="tel:+33623563604">M'appeler</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>© <span id="annee"></span> Martin Bastide – BTS Aménagement paysager</footer>
+
+<script>
+  // Menu mobile
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('ouvert');
+    burger.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('ouvert');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+  // Année du pied de page
+  document.getElementById('annee').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
